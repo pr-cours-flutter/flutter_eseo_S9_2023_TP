@@ -47,7 +47,7 @@ class _SearchAddressState extends State<SearchAddress> {
               controller: _controller,
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.location_on),
-                labelText: 'Rechercher une adresse2',
+                labelText: 'Rechercher une adresse',
               ),
               onChanged: _onSearchChanged),
           Expanded(

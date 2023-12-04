@@ -26,10 +26,14 @@ class _HomeState extends State<Home> {
       ),
       body: ListView.separated(
           itemCount: _companies.length,
-          itemBuilder: (context, index) => ListTile(
-                leading: const Icon(Icons.business_outlined),
-                title: Text(_companies[index].name),
-              ),
+          itemBuilder: (context, index) {
+            final company = _companies[index];
+            return ListTile(
+              leading: const Icon(Icons.business_outlined),
+              title: Text(company.name),
+              subtitle: Text('${company.address.street}, ${company.address.postCode} ${company.address.city}'),
+            );
+          },
           separatorBuilder: (context, index) => const Divider()),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
