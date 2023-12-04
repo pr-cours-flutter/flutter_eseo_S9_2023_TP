@@ -1,14 +1,25 @@
-import 'package:eseso_s9_tp/models/company.dart';
+import 'package:eseo_s9_tp/models/address.dart';
+import 'package:eseo_s9_tp/models/company.dart';
+import 'package:eseo_s9_tp/router.dart';
 import 'package:flutter/material.dart';
 
-class AddCompany extends StatelessWidget {
-  AddCompany({super.key});
+class AddCompany extends StatefulWidget {
+  const AddCompany({super.key});
 
+  @override
+  State<AddCompany> createState() => _AddCompanyState();
+}
+
+class _AddCompanyState extends State<AddCompany> {
   // Controller pour le champ de texte (name)
   final TextEditingController _nameController = TextEditingController();
 
+  final TextEditingController _addressController = TextEditingController();
+
   // Clé pour le formulaire
   final GlobalKey<FormState> _formKey = GlobalKey();
+
+  Address? _address;
 
   @override
   Widget build(BuildContext context) {
@@ -45,12 +56,36 @@ class AddCompany extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
+              TextFormField(
+                controller: _addressController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Veuillez entrer une adresse';
+                  }
+                  return null;
+                },
+                readOnly: true,
+                onTap: () async {
+                  _address = await Navigator.of(context).pushNamed(AppRouter.searchAddress) as Address?;
+                  if (_address != null) {
+                    _addressController.text = '${_address!.street}, ${_address!.postCode} ${_address!.city}';
+                  }
+                },
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.location_on),
+                  labelText: 'Adresse de l\'entreprise',
+                ),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
               ElevatedButton(
                   onPressed: () {
                     // Vérification que le formulaire est valide
-                    if (_formKey.currentState?.validate() ?? false) {
+                    if (_formKey.currentState?.validate() ?? false && _address != null) {
                       final name = _nameController.text;
-                      final company = Company(name);
+                      final company = Company(name, _address!);
 
                       Navigator.pop(context, company);
                     }

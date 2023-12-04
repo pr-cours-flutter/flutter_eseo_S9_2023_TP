@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="eseso_s9_tp"
+        android:label="eseo_s9_tp"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

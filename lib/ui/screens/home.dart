@@ -1,5 +1,6 @@
-import 'package:eseso_s9_tp/models/company.dart';
-import 'package:eseso_s9_tp/router.dart';
+import 'package:eseo_s9_tp/models/address.dart';
+import 'package:eseo_s9_tp/models/company.dart';
+import 'package:eseo_s9_tp/router.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -12,9 +13,9 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   // Liste des entreprises
   final List<Company> _companies = [
-    const Company('Entreprise 1'),
-    const Company('Entreprise 2'),
-    const Company('Entreprise 3'),
+    Company('Entreprise 1', Address('Rue 1', 'Ville 1', '12345')),
+    Company('Entreprise 2', Address('Rue 2', 'Ville 2', '12345')),
+    Company('Entreprise 3', Address('Rue 3', 'Ville 3', '12345')),
   ];
 
   @override

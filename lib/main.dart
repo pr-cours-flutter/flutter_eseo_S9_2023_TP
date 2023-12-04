@@ -1,4 +1,4 @@
-import 'package:eseso_s9_tp/router.dart';
+import 'package:eseo_s9_tp/router.dart';
 import 'package:flutter/material.dart';
 
 void main() {

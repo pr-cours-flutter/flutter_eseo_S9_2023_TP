@@ -1,4 +1,4 @@
-package com.example.eseso_s9_tp
+package com.example.eseo_s9_tp
 
 import io.flutter.embedding.android.FlutterActivity
 
