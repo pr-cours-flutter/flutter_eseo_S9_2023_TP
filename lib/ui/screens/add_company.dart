@@ -1,7 +1,9 @@
+import 'package:eseo_s9_tp/blocs/company_cubit.dart';
 import 'package:eseo_s9_tp/models/address.dart';
 import 'package:eseo_s9_tp/models/company.dart';
 import 'package:eseo_s9_tp/router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddCompany extends StatefulWidget {
   const AddCompany({super.key});
@@ -87,7 +89,9 @@ class _AddCompanyState extends State<AddCompany> {
                       final name = _nameController.text;
                       final company = Company(name, _address!);
 
-                      Navigator.pop(context, company);
+                      context.read<CompanyCubit>().addCompany(company);
+
+                      Navigator.pop(context);
                     }
                   },
                   child: const Text('Valider'))
