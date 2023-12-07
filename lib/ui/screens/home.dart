@@ -14,6 +14,13 @@ class Home extends StatelessWidget {
         title: const Text('Liste des entreprises'),
       ),
       body: BlocBuilder<CompanyCubit, List<Company>>(builder: (context, companies) {
+        if (companies.isEmpty) {
+          return const Center(
+            child: Text(
+              'Aucune entreprise',
+            ),
+          );
+        }
         return ListView.separated(
             itemCount: companies.length,
             itemBuilder: (context, index) {

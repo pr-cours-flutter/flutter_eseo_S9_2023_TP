@@ -12,10 +12,7 @@ class SearchAddress extends StatefulWidget {
 }
 
 class _SearchAddressState extends State<SearchAddress> {
-  List<Address> _addresses = [
-    Address('Place du Ralliement', 'Angers', '49000'),
-    Address('19 rue André le Notre', 'Angers', '49066'),
-  ];
+  List<Address> _addresses = [];
 
   final TextEditingController _controller = TextEditingController();
 
